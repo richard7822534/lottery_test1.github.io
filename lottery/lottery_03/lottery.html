@@ -48,16 +48,16 @@
 		}
 		
 		// 監聽canvas的onmousedown事件
-		c1.ontouchstart = function(ev){ // 原本是onmousedown
-            var w = 600;	
-            var h = 600;	
-            var x = ev.pageX-c1.offsetLeft - w/2;
-            var y = ev.pageY-c1.offsetTop - h/2;
+		c1.onmousedown = function(ev){
+            var w = 50;			// 清除筆刷的寬度
+            var h = 50;			// 清除筆刷的高度
+            var x = ev.pageX-c1.offsetLeft - w/2;    // 清除筆刷的x位置
+            var y = ev.pageY-c1.offsetTop - h/2;		// 清除筆刷的y位置
             ctx1.clearRect(x,y,w,h);
 		}
-		c1.ontouchend = function(ev){ // 原本是onmouseup 
-
-		c1.ontouchmove = null; // 原本是onmousemove 
+		c1.onmouseup = function(ev){
+		// 取消onmousemove事件
+		c1.onmousemove = null;
 		}
 
 	</script>
