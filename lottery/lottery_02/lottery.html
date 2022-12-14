@@ -52,8 +52,8 @@
             console.log(e);
             var w = 600;	
             var h = 600;	
-            var x = e.pageX-c1.offsetLeft - w/2;
-            var y = e.pageY-c1.offsetTop - h/2;
+            var x = ev.pageX-c1.offsetLeft - w/2;
+            var y = ev.pageY-c1.offsetTop - h/2;
             ctx1.clearRect(x,y,w,h);
 		}
 		c1.ontouchend = function(ev){ // 原本是onmouseup 
