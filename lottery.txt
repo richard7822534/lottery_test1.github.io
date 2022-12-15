@@ -53,14 +53,14 @@
         c1.addEventListener("touchmove", function(e){ onMove(e); }, false );
         c1.addEventListener("touchend", function(e){ onEnd(e); }, false );
         function onStart ( touchEvent ) {
-          if( navigator.userAgent.match(/Android/i) ) {
+          if( !iOS ) {
             touchEvent.preventDefault();
           }
         }
         
         function onMove ( touchEvent ) {
             var touch;
-            if( navigator.userAgent.match(/Android/i) ) {
+            if( !iOS ) {
                 touchEvent.preventDefault();
                 touch = touchEvent.originalEvent.touches[0] || touchEvent.originalEvent.changedTouches[0];
             } else {
@@ -74,7 +74,7 @@
         }
         
         function onEnd ( touchEvent ) {
-            if( navigator.userAgent.match(/Android/i) ) {
+            if( !iOS ) {
                 touchEvent.preventDefault();
             }
             c1.ontouchmove = null;
