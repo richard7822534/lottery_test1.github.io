@@ -49,9 +49,9 @@
 		
 		// 監聽canvas的onmousedown事件
 // 		c1.ontouchstart = function(ev){ // 原本是onmousedown
-        $('c1').bind('touchstart', function(ev) {
+        $(c1).bind('touchstart', function(ev) {
             ev.preventDefault();
-            $('c1').bind('touchmove', function(e) {
+            $(c1).bind('touchmove', function(e) {
                 e.preventDefault();
                 if ('Android' == getMobileOperatingSystem()){
                     var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
