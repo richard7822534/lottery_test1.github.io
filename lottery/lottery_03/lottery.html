@@ -48,21 +48,15 @@
 		}
 		
 		// 監聽canvas的onmousedown事件
-		c1.ontouchstart = function(ev){ // 原本是onmousedown
-            ev.preventDefault();    
-            c1.ontouchmove = function(e){  // 原本是onmousemove 
-                e.preventDefault();
-                var w = 50;	
-                var h = 50;	
-                var x = e.pageX-c1.offsetLeft - w/2;
-                var y = e.pageY-c1.offsetTop - h/2;
-                ctx1.clearRect(x,y,w,h);
-            }
+		c1.ontouchstart = function(ev){ // 原本是onmousedown   
+            var w = 50;	
+            var h = 50;	
+            var x = ev.pageX-c1.offsetLeft - w/2;
+            var y = ev.pageY-c1.offsetTop - h/2;
+            ctx1.clearRect(x,y,w,h);
         }
-		
-		
+        
 		c1.ontouchend = function(ev){ // 原本是onmouseup
-            ev.preventDefault();
             c1.ontouchmove = null; // 原本是onmousemove 
 		}
 
