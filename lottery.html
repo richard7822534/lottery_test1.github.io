@@ -32,6 +32,8 @@
 		var ctx1 = c1.getContext("2d");
 		var ctx2 = c2.getContext("2d");
 		
+        var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
+        var touch;
 		
 		// 將完整履歷放到下層  canvas2
 		var imgs = new Image();
@@ -53,10 +55,10 @@
             ev.preventDefault();
             $(c1).bind('touchmove', function(e) {
                 e.preventDefault();
-                if ('Android' == getMobileOperatingSystem()){
-                    var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                if (iOS){
+                    touch = e;
                 } else{
-                    var touch = e;
+                    touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
                 }
                 
                 var w = 100;	
@@ -71,27 +73,6 @@
 		c1.ontouchend = function(ev){ // 原本是onmouseup
             c1.ontouchmove = null; // 原本是onmousemove 
 		}
-        
-        
-        function getMobileOperatingSystem() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-            // Windows Phone must come first because its UA also contains "Android"
-            if (/windows phone/i.test(userAgent)) {
-                return "Windows Phone";
-            }
-
-            if (/android/i.test(userAgent)) {
-                return "Android";
-            }
-
-            // iOS detection from: http://stackoverflow.com/a/9039885/177710
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                return "iOS";
-            }
-
-            return "unknown";
-        }
 
 	</script>
 </html>
