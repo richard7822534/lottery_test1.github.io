@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta content="width=device-width, initial-scale=1.0" charset="UTF-8">
+		<meta charset="UTF-8">
 		<title>電腦版刮刮履歷</title>
 		<style type="text/css">
 			#c1{
@@ -33,7 +33,7 @@
 		var ctx2 = c2.getContext("2d");
 		
         var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
-        var touch;
+        var touch = '';
 		
 		// 將完整履歷放到下層  canvas2
 		var imgs = new Image();
