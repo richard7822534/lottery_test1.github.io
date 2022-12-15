@@ -61,7 +61,6 @@
         function onMove ( touchEvent ) {
             var touch;
             if( !iOS ) {
-                touchEvent.preventDefault();
                 touch = touchEvent.originalEvent.touches[0] || touchEvent.originalEvent.changedTouches[0];
             } else {
                 touch = touchEvent;
