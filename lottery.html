@@ -99,30 +99,19 @@
         }
         
         
-		// 監聽canvas的onmousedown事件
-// 		c1.ontouchstart = function(ev){ // 原本是onmousedown
-//         $(c1).bind('touchstart', function(ev) {
-//             ev.preventDefault();
-//             $(c1).bind('touchmove', function(e) {
-//                 e.preventDefault();
-//                 if (iOS){
-//                     touch = e;
-//                 } else{
-//                     touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-//                 }
-                
-//                 var w = 100;	
-//                 var h = 100;	
-//                 var x = touch.pageX-c1.offsetLeft - w/2;
-//                 var y = touch.pageY-c1.offsetTop - h/2;
-//                 ctx1.clearRect(x,y,w,h);
-//             })
-//         })
-        
-        
-// 		c1.ontouchend = function(ev){ // 原本是onmouseup
-//             c1.ontouchmove = null; // 原本是onmousemove 
-// 		}
+        window.addEventListener('resize', resizeCanvas, false);
+        function resizeCanvas(canvas){
+            if(window.orientation !== undefined)// if mobile
+            {
+                canvas.width = document.documentElement.clientWidth;
+                canvas.height = document.documentElement.clientHeight;
+            } else{ // if pc
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        }
+        resizeCanvas(c1);
+        resizeCanvas(c2);
 
 	</script>
 </html>
