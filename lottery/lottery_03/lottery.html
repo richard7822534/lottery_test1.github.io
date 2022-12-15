@@ -50,18 +50,13 @@
 			ctx1.drawImage(this,0,0)
 		}
 		
-        c1.addEventListener("touchstart", function(e){ onStart(e); }, false );
-        c1.addEventListener("touchmove", function(e){ onMove(e); }, false );
+        c1.addEventListener("touchstart", function(e){ onMove(e); }, false );
         c1.addEventListener("touchend", function(e){ onEnd(e); }, false );
-        function onStart ( touchEvent ) {
-          if( !iOS ) {
-            touchEvent.preventDefault();
-          }
-        }
         
         function onMove ( touchEvent ) {
             var touch;
             if( !iOS ) {
+                touchEvent.preventDefault();
                 touch = touchEvent.originalEvent.touches[0] || touchEvent.originalEvent.changedTouches[0];
             } else {
                 touch = touchEvent;
