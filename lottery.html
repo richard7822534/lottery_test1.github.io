@@ -49,30 +49,62 @@
 			ctx1.drawImage(this,0,0)
 		}
 		
+        c1.addEventListener("touchstart", function(e){ onStart(e); }, false );
+        c1.addEventListener("touchmove", function(e){ onMove(e); }, false );
+        c1.addEventListener("touchend", function(e){ onEnd(e); }, false );
+        function onStart ( touchEvent ) {
+          if( navigator.userAgent.match(/Android/i) ) {
+            touchEvent.preventDefault();
+          }
+        }
+        
+        function onMove ( touchEvent ) {
+            var touch;
+            if( navigator.userAgent.match(/Android/i) ) {
+                touchEvent.preventDefault();
+                touch = touchEvent.originalEvent.touches[0] || touchEvent.originalEvent.changedTouches[0];
+            } else {
+                touch = touchEvent;
+            }
+            var w = 100;	
+            var h = 100;	
+            var x = touch.pageX-c1.offsetLeft - w/2;
+            var y = touch.pageY-c1.offsetTop - h/2;
+            ctx1.clearRect(x,y,w,h);
+        }
+        
+        function onEnd ( touchEvent ) {
+            if( navigator.userAgent.match(/Android/i) ) {
+                touchEvent.preventDefault();
+            }
+            c1.ontouchmove = null;
+        }
+        
+        
 		// 監聽canvas的onmousedown事件
 // 		c1.ontouchstart = function(ev){ // 原本是onmousedown
-        $(c1).bind('touchstart', function(ev) {
-            ev.preventDefault();
-            $(c1).bind('touchmove', function(e) {
-                e.preventDefault();
-                if (iOS){
-                    touch = e;
-                } else{
-                    touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-                }
+//         $(c1).bind('touchstart', function(ev) {
+//             ev.preventDefault();
+//             $(c1).bind('touchmove', function(e) {
+//                 e.preventDefault();
+//                 if (iOS){
+//                     touch = e;
+//                 } else{
+//                     touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+//                 }
                 
-                var w = 100;	
-                var h = 100;	
-                var x = touch.pageX-c1.offsetLeft - w/2;
-                var y = touch.pageY-c1.offsetTop - h/2;
-                ctx1.clearRect(x,y,w,h);
-            })
-        })
+//                 var w = 100;	
+//                 var h = 100;	
+//                 var x = touch.pageX-c1.offsetLeft - w/2;
+//                 var y = touch.pageY-c1.offsetTop - h/2;
+//                 ctx1.clearRect(x,y,w,h);
+//             })
+//         })
         
         
-		c1.ontouchend = function(ev){ // 原本是onmouseup
-            c1.ontouchmove = null; // 原本是onmousemove 
-		}
+// 		c1.ontouchend = function(ev){ // 原本是onmouseup
+//             c1.ontouchmove = null; // 原本是onmousemove 
+// 		}
 
 	</script>
 </html>
