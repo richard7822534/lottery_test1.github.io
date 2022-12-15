@@ -34,19 +34,19 @@
         var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/i) ? true : false );
         var touch = '';
 		
-// 		// 將完整履歷放到下層  canvas2
-// 		var imgs = new Image();
-// 		imgs.src = 'img/lottery_res.jpg';
-// 		imgs.onload = function(){
-// 			ctx2.drawImage(this,0,0)
-// 		}
+		// 將完整履歷放到下層  canvas2
+		var imgs = new Image();
+		imgs.src = 'img/lottery_res.jpg';
+		imgs.onload = function(){
+			ctx2.drawImage(this,0,0)
+		}
 		
-// 		// 需要刮的履歷放在上層  canvas1
-// 		var img2 = new Image();
-// 		img2.src = 'img/lottery_cov.jpg';
-// 		img2.onload = function(){
-// 			ctx1.drawImage(this,0,0)
-// 		}
+		// 需要刮的履歷放在上層  canvas1
+		var img2 = new Image();
+		img2.src = 'img/lottery_cov.jpg';
+		img2.onload = function(){
+			ctx1.drawImage(this,0,0)
+		}
 		
         c1.addEventListener("touchstart", function(e){ onStart(e);}, false );
         c1.addEventListener("touchmove", function(e){ onMove(e); }, false );
@@ -99,25 +99,25 @@
         }
         
         
-        window.addEventListener('resize', resizeCanvas, false);
-        function resizeCanvas(canvas, ctx, img_src){
-            if(window.orientation !== undefined)// if mobile
-            {
-                canvas.width = document.documentElement.clientWidth;
-                canvas.height = document.documentElement.clientHeight;
-            } else{ // if pc
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
+//         window.addEventListener('resize', resizeCanvas, false);
+//         function resizeCanvas(canvas, ctx, img_src){
+//             if(window.orientation !== undefined)// if mobile
+//             {
+//                 canvas.width = document.documentElement.clientWidth;
+//                 canvas.height = document.documentElement.clientHeight;
+//             } else{ // if pc
+//                 canvas.width = window.innerWidth;
+//                 canvas.height = window.innerHeight;
+//             }
             
-            var imgs = new Image();
-            imgs.src = img_src;
-            imgs.onload = function(){
-                ctx.drawImage(this,0,0)
-            }
-        }
-        resizeCanvas(c1, ctx1, 'img/lottery_cov.jpg');
-        resizeCanvas(c2, ctx2, 'img/lottery_res.jpg');
+//             var imgs = new Image();
+//             imgs.src = img_src;
+//             imgs.onload = function(){
+//                 ctx.drawImage(this,0,0)
+//             }
+//         }
+//         resizeCanvas(c1, ctx1, 'img/lottery_cov.jpg');
+//         resizeCanvas(c2, ctx2, 'img/lottery_res.jpg');
 
 	</script>
 </html>
