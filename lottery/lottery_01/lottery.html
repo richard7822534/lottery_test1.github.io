@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" charset="UTF-8">
 		<title>電腦版刮刮履歷</title>
 		<style type="text/css">
 			#c1{
@@ -48,17 +48,50 @@
 		}
 		
 		// 監聽canvas的onmousedown事件
-		c1.ontouchstart = function(ev){ // 原本是onmousedown   
-            var w = 300;	
-            var h = 300;	
-            var x = ev.pageX-c1.offsetLeft - w/2;
-            var y = ev.pageY-c1.offsetTop - h/2;
-            ctx1.clearRect(x,y,w,h);
-        }
+// 		c1.ontouchstart = function(ev){ // 原本是onmousedown
+        $('c1').bind('touchstart', function(ev) {
+            ev.preventDefault();
+            $('c1').bind('touchmove', function(e) {
+                e.preventDefault();
+                if ('Android' == getMobileOperatingSystem()){
+                    var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                } else{
+                    var touch = e;
+                }
+                
+                var w = 100;	
+                var h = 100;	
+                var x = touch.pageX-c1.offsetLeft - w/2;
+                var y = touch.pageY-c1.offsetTop - h/2;
+                ctx1.clearRect(x,y,w,h);
+            })
+        })
+        
         
 		c1.ontouchend = function(ev){ // 原本是onmouseup
             c1.ontouchmove = null; // 原本是onmousemove 
 		}
+        
+        
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+
+            return "unknown";
+        }
 
 	</script>
 </html>
