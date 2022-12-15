@@ -48,9 +48,24 @@
 			ctx1.drawImage(this,0,0)
 		}
 		
-        c1.addEventListener("touchstart", function(e){var pagex; var pagey;}, false );
+        c1.addEventListener("touchstart", function(e){ onStart(e);}, false );
         c1.addEventListener("touchmove", function(e){ onMove(e); }, false );
         c1.addEventListener("touchend", function(e){ onEnd(e); }, false );
+        
+        function onStart ( touchEvent ) {
+            var pagex = '';
+            var pagey = '';
+            
+            if( !iOS ) {
+//                 touchEvent.preventDefault();
+                pagex = touchEvent.changedTouches[0].pageX;
+                pagey = touchEvent.changedTouches[0].pageY;
+            } else {
+                pagex = touchEvent.pageX;
+                pagey = touchEvent.pageY;
+            }
+        }
+        
         
         function onMove ( touchEvent ) {
             var pagex = '';
