@@ -53,16 +53,16 @@
         c1.addEventListener("touchend", function(e){ onEnd(e); }, false );
         
         function onMove ( touchEvent ) {
-            var pagex;
-            var pagey;
+            var pagex = '';
+            var pagey = '';
             
             if( !iOS ) {
 //                 touchEvent.preventDefault();
-                pagex = e.changedTouches[0].pageX;
-                pagey = e.changedTouches[0].pageY;
+                pagex = touchEvent.changedTouches[0].pageX;
+                pagey = touchEvent.changedTouches[0].pageY;
             } else {
-                pagex = e.pageX;
-                pagey = e.pageY;
+                pagex = touchEvent.pageX;
+                pagey = touchEvent.pageY;
             }
                
             var w = 100;	
@@ -73,7 +73,7 @@
 //             var y = touch.pageY-c1.offsetTop - h/2;
             ctx1.clearRect(x,y,w,h);
             
-            e.preventDefault();
+            touchEvent.preventDefault();
         }
         
         function onEnd ( touchEvent ) {
