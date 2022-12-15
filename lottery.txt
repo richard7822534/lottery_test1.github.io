@@ -88,7 +88,7 @@
 //             var y = touch.pageY-c1.offsetTop - h/2;
             ctx1.clearRect(x,y,w,h);
             
-            touchEvent.preventDefault();
+//             touchEvent.preventDefault();
         }
         
         function onEnd ( touchEvent ) {
